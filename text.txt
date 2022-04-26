@@ -1,0 +1,56 @@
+function getQuestion(){
+  Dselect()
+  const quixData = myQuestion[currentQuix];
+a.innerHTML = quixData.A
+b.innerHTML = quixData.B
+c.innerHTML = quixData.C
+d.innerHTML = quixData.D
+
+question.innerHTML = quixData.questions
+
+}
+
+function getAnswer(){
+ 
+  let  answer = undefined
+    theAnswer.forEach((item) =>{
+     if(item.checked){
+      answer = item.id
+     }
+    })
+    return answer
+}
+
+function Dselect(){
+  theAnswer.forEach((item) =>{
+     item.checked = false
+})
+}
+// assign all the question data to the element
+//  check if the correct answer is checked
+// show the score 
+
+
+submit.addEventListener('click', () => {
+    let answer =  getAnswer()
+    if(answer === myQuestion[currentQuix].answer){
+     score++
+    }
+    if(answer){
+      currentQuix++ 
+       if(currentQuix < myQuestion.length){
+        getQuestion();
+    }else{
+      console.log(score)
+      alert('test completed')
+    }
+    }
+//  if(currentQuix < myQuestion.length){
+//         getQuestion();
+//     }else{
+//       alert('test completed')
+//     }
+      
+ });
+
+ getQuestion();
